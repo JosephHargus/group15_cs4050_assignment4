@@ -3,6 +3,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Priority Queue (Minimum)
+ * @param <T>
+ * @author Joseph Hargus
+ */
 public class Heap <T extends Number & Comparable<T>> {
     private static class Node<T extends Number & Comparable<T>> {
         int id;
