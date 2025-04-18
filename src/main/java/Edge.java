@@ -31,7 +31,7 @@ public class Edge extends Number implements Comparable<Edge> {
 
     @Override
     public float floatValue() {
-        return 0;
+        return weight;
     }
 
     @Override
@@ -41,6 +41,6 @@ public class Edge extends Number implements Comparable<Edge> {
 
     @Override
     public int compareTo(Edge o) {
-        return 0;
+        return Float.compare(this.weight, o.weight);
     }
 }
