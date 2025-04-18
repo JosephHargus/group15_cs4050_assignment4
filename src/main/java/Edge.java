@@ -6,14 +6,14 @@
 public class Edge extends Number implements Comparable<Edge> {
     int source;
     int destination;
-    int weight;
+    float weight;
 
     /**
      * Constructor
      * @param destination the other end of the vert-to-vert connection
      * @param weight the weight of the edge
      */
-    public Edge(int source, int destination, int weight) {
+    public Edge(int source, int destination, float weight) {
         this.source = source;
         this.destination = destination;
         this.weight = weight;

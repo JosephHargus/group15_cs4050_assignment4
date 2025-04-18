@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -13,20 +14,24 @@ public class Main {
         try {
             //File f = new File("graph.txt");
             Scanner reader = new Scanner(f);
-            System.out.print("we here");
+            System.out.print("we here\n");
             if (reader.hasNextLine()) {
                 qty = Integer.parseInt(reader.nextLine()); //number of vertices
                 connections = new Edge[qty];
-                System.out.println(qty);
+                System.out.println(qty + "\n");
+
+                //Integer[] array = new Integer[3];
                 //once you've acquired the number of vertices
                 while (reader.hasNextLine()) {
                     for (int i=0; i<qty; i++) {
-                        int src = reader.nextInt();
-                        int dest = reader.nextInt();
-                        int weight = reader.nextInt();
+                        String[] array = reader.nextLine().split(" ");
+                        System.out.println(Arrays.toString(array));
+                        int src = Integer.parseInt(array[0]);
+                        int dest = Integer.parseInt(array[1]);
+                        float weight = Float.parseFloat(array[2]);
                         Edge e = new Edge(src, dest, weight);
                         connections[i] = e;
-                        System.out.println(e);
+                        //System.out.println(e);
                     }
                 }
             }
