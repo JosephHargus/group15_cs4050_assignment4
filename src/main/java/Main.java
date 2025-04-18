@@ -11,8 +11,7 @@ public class Main {
         ArrayList<ArrayList<Edge>> connections = null;
 
         File f = new File("src/main/resources/graph.txt").getAbsoluteFile();
-        //print true if f exists
-        //System.out.println(f.exists());
+
         try {
             Scanner reader = new Scanner(f);
 
@@ -26,17 +25,18 @@ public class Main {
                 //once you've acquired the number of vertices
                 while (reader.hasNextLine()) {
                     if (!reader.hasNextLine()) break; // avoid crash
-                    String[] array = reader.nextLine().split(" ");
-                    //System.out.println(Arrays.toString(array));
+                    String[] array = reader.nextLine().split(" "); //reading the line
+
+                    //converting to ints and float
                     int src = Integer.parseInt(array[0]);
                     int dest = Integer.parseInt(array[1]);
                     float weight = Float.parseFloat(array[2]);
+
+                    //writing out the edge in either direction
                     Edge e = new Edge(dest, weight);
                     connections.get(src - 1).add(e);
                     e = new Edge(src, weight);
                     connections.get(dest - 1).add(e);
-
-                    //System.out.println(e);
                 }
             }
 
@@ -46,7 +46,6 @@ public class Main {
                 adjacentList(connections.get(k),k+1);
             }
 
-            //heap = new Heap<Edge>(connections,qty);
             reader.close();
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
