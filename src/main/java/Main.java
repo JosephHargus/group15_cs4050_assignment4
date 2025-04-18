@@ -10,20 +10,22 @@ public class Main {
         Edge[] connections;
 
         File f = new File("src/main/resources/graph.txt").getAbsoluteFile();
-        System.out.println(f.exists());
+        //print true if f exists
+        //System.out.println(f.exists());
         try {
             //File f = new File("graph.txt");
             Scanner reader = new Scanner(f);
-            System.out.print("we here\n");
+            //System.out.print("we here\n");
             if (reader.hasNextLine()) {
                 qty = Integer.parseInt(reader.nextLine()); //number of vertices
                 connections = new Edge[qty];
-                System.out.println(qty + "\n");
+                //System.out.println(Edge qty + "\n");
 
                 //Integer[] array = new Integer[3];
                 //once you've acquired the number of vertices
                 while (reader.hasNextLine()) {
                     for (int i=0; i<qty; i++) {
+                        if (!reader.hasNextLine()) break; // avoid crash
                         String[] array = reader.nextLine().split(" ");
                         System.out.println(Arrays.toString(array));
                         int src = Integer.parseInt(array[0]);
