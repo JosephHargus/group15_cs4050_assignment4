@@ -31,22 +31,19 @@ public class Main {
                     int src = Integer.parseInt(array[0]);
                     int dest = Integer.parseInt(array[1]);
                     float weight = Float.parseFloat(array[2]);
-                    Edge e = new Edge(src, dest, weight);
+                    Edge e = new Edge(dest, weight);
                     connections.get(src - 1).add(e);
-                    e = new Edge(dest, src, weight);
+                    e = new Edge(src, weight);
                     connections.get(dest - 1).add(e);
 
                     //System.out.println(e);
                 }
             }
 
+            //The list of edges before using Prim's algorithm
             System.out.println("The input graph is represented in an adjacent list as: ");
             for(int k=0;k < connections.size(); k++) {
-                System.out.print(k+1);
-                for(Edge e: connections.get(k)) {
-                    System.out.print(" --> (" + e.destination + ", " + e.weight + ")");
-                }
-                System.out.println("\n");
+                adjacentList(connections.get(k),k+1);
             }
 
             //heap = new Heap<Edge>(connections,qty);
@@ -55,5 +52,19 @@ public class Main {
             System.out.println("An error occurred.");
             e.getMessage();
         }
+    }
+
+    /**
+     * This method produces all connected vertices to a given vertex n.
+     * @author Kaitlyn Self
+     * @param adj All edges connected to element n
+     * @param n This is the id of the source vertex
+     */
+    public static void adjacentList(ArrayList<Edge> adj, int n) {
+        System.out.print(n);
+        for(Edge e: adj) {
+            System.out.print(" --> (" + e.destination + ", " + e.weight + ")");
+        }
+        System.out.print("\n");
     }
 }
